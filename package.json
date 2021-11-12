@@ -2,7 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://15.206.98.97/",
+  "proxy": "http://15.206.98.97",
   "dependencies": {
     "@david.kucsai/react-pdf-table": "^0.3.0",
     "@react-pdf/renderer": "^2.0.20",
