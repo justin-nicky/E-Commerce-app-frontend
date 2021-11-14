@@ -35,7 +35,11 @@ export const createOrder = (order) => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.post('/api/orders/', order, config)
+    const { data } = await axios.post(
+      'https://queuex.online/api/orders/',
+      order,
+      config
+    )
 
     dispatch({ type: ORDER_CREATE_SUCCESS, payload: data })
   } catch (error) {
@@ -59,7 +63,10 @@ export const getOrderDetails = (id) => async (dispatch, getState) => {
 
     const config = { headers: { Authorization: `Bearer ${userInfo.token}` } }
 
-    const { data } = await axios.get(`/api/orders/${id}`, config)
+    const { data } = await axios.get(
+      `https://queuex.online/api/orders/${id}`,
+      config
+    )
 
     dispatch({ type: ORDER_DETAILS_SUCCESS, payload: data })
   } catch (error) {
@@ -90,7 +97,7 @@ export const payOrder =
       }
 
       const { data } = await axios.put(
-        `/api/orders/${orderId}/pay`,
+        `https://queuex.online/api/orders/${orderId}/pay`,
         paymentResult,
         config
       )
@@ -121,7 +128,10 @@ export const listMyOrders = () => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.get(`/api/orders/myorders`, config)
+    const { data } = await axios.get(
+      `https://queuex.online/api/orders/myorders`,
+      config
+    )
 
     dispatch({ type: ORDER_LIST_PROFILE_SUCCESS, payload: data })
   } catch (error) {
@@ -149,7 +159,7 @@ export const listAllOrders = () => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.get(`/api/orders`, config)
+    const { data } = await axios.get(`https://queuex.online/api/orders`, config)
 
     dispatch({ type: ORDER_LIST_SUCCESS, payload: data })
   } catch (error) {
@@ -180,7 +190,7 @@ export const updateOrderStatus = (id, status) => async (dispatch, getState) => {
     }
     console.log(config)
     const { data } = await axios.put(
-      `/api/orders/${id}/status`,
+      `https://queuex.online/api/orders/${id}/status`,
       {
         status,
       },
@@ -214,7 +224,7 @@ export const cancelOrder = (id) => async (dispatch, getState) => {
       },
     }
     console.log(config)
-    await axios.put(`/api/orders/${id}/cancel`, {}, config)
+    await axios.put(`https://queuex.online/api/orders/${id}/cancel`, {}, config)
     dispatch({ type: ORDER_UPDATE_STATUS_SUCCESS })
   } catch (error) {
     dispatch({

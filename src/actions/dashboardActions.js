@@ -19,7 +19,10 @@ export const populateDashboard = () => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.get(`/api/dashboard`, config)
+    const { data } = await axios.get(
+      `https://queuex.online/api/dashboard`,
+      config
+    )
 
     dispatch({ type: DASHBOARD_DETAILS_SUCCESS, payload: data })
   } catch (error) {

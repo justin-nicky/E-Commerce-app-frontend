@@ -25,7 +25,9 @@ export const listProducts =
   async (dispatch) => {
     try {
       dispatch({ type: PRODUCT_LIST_REQUEST })
-      const { data } = await axios.get(`/api/products?keyword=${keyword}`)
+      const { data } = await axios.get(
+        `https://queuex.online/api/products?keyword=${keyword}`
+      )
       dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data })
     } catch (error) {
       dispatch({
@@ -41,7 +43,7 @@ export const listProducts =
 export const listProductDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_DETAILS_REQUEST })
-    const { data } = await axios.get(`/api/products/${id}`)
+    const { data } = await axios.get(`https://queuex.online/api/products/${id}`)
     dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: data })
   } catch (error) {
     dispatch({
@@ -64,7 +66,7 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
 
     const config = { headers: { Authorization: `Bearer ${userInfo.token}` } }
 
-    await axios.delete(`/api/products/${id}`, config)
+    await axios.delete(`https://queuex.online/api/products/${id}`, config)
 
     dispatch({ type: PRODUCT_DELETE_SUCCESS })
   } catch (error) {
@@ -88,7 +90,11 @@ export const createProduct = () => async (dispatch, getState) => {
 
     const config = { headers: { Authorization: `Bearer ${userInfo.token}` } }
 
-    const { data } = await axios.post(`/api/products`, {}, config)
+    const { data } = await axios.post(
+      `https://queuex.online/api/products`,
+      {},
+      config
+    )
 
     dispatch({ type: PRODUCT_CREATE_SUCCESS, payload: data, success: true })
   } catch (error) {
@@ -118,7 +124,7 @@ export const updateProduct = (product) => async (dispatch, getState) => {
     }
 
     const { data } = await axios.put(
-      `/api/products/${product._id}`,
+      `https://queuex.online/api/products/${product._id}`,
       product,
       config
     )
@@ -138,7 +144,9 @@ export const updateProduct = (product) => async (dispatch, getState) => {
 export const listTopRatedProducts = () => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_TOP_RATED_REQUEST })
-    const { data } = await axios.get(`/api/products/top-rated`)
+    const { data } = await axios.get(
+      `https://queuex.online/api/products/top-rated`
+    )
     dispatch({ type: PRODUCT_TOP_RATED_SUCCESS, payload: data })
   } catch (error) {
     dispatch({

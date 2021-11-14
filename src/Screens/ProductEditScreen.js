@@ -151,7 +151,11 @@ const ProductEditScreen = ({ match, history }) => {
         },
       }
 
-      const { data } = await axios.post('/api/upload', formData, config)
+      const { data } = await axios.post(
+        'https://queuex.online/api/upload',
+        formData,
+        config
+      )
 
       setPreviewImage(data)
       setUploading(false)

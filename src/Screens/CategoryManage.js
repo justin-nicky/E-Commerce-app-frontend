@@ -83,7 +83,7 @@ const CategoryManage = ({ history }) => {
     if (errorDiscountPercentage === '' && errorDiscountCategory === '') {
       try {
         await axios.put(
-          `/api/categories/${updateCouponForm.category}`,
+          `https://queuex.online/api/categories/${updateCouponForm.category}`,
           { discount: updateCouponForm.discount },
           config
         )

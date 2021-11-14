@@ -95,7 +95,7 @@ const PlaceOrderScreen = ({ history }) => {
           headers: { Authorization: `Bearer ${userInfo.token}` },
         }
         const { data } = await axios.get(
-          `/api/coupons/${couponFromUser}`,
+          `https://queuex.online/api/coupons/${couponFromUser}`,
           config
         )
         if (data) {

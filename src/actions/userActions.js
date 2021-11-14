@@ -33,7 +33,7 @@ export const login = (email, password) => async (dispatch) => {
     const config = { headers: { 'Content-Type': 'application/json' } }
 
     const { data } = await axios.post(
-      '/api/users/login',
+      'https://queuex.online/api/users/login',
       { email, password },
       config
     )
@@ -65,7 +65,7 @@ export const register = (name, email, password) => async (dispatch) => {
     const config = { headers: { 'Content-Type': 'application/json' } }
 
     const { data } = await axios.post(
-      '/api/users',
+      'https://queuex.online/api/users',
       { email, password, name },
       config
     )
@@ -91,7 +91,7 @@ export const googleSignIn = (token) => async (dispatch) => {
     const config = { headers: { 'Content-Type': 'application/json' } }
 
     const { data } = await axios.post(
-      '/api/users/signinwithgoogle',
+      'https://queuex.online/api/users/signinwithgoogle',
       { credential: token },
       config
     )
@@ -120,7 +120,7 @@ export const listUsers = () => async (dispatch, getState) => {
 
     const config = { headers: { Authorization: `Bearer ${userInfo.token}` } }
 
-    const { data } = await axios.get('/api/users', config)
+    const { data } = await axios.get('https://queuex.online/api/users', config)
 
     dispatch({ type: USER_LIST_SUCCESS, payload: data })
   } catch (error) {
@@ -145,7 +145,7 @@ export const disableUser = (id, disable) => async (dispatch, getState) => {
     const config = { headers: { Authorization: `Bearer ${userInfo.token}` } }
 
     const { data } = await axios.patch(
-      `/api/users/${id}`,
+      `https://queuex.online/api/users/${id}`,
       { isDisabled: disable },
       config
     )
@@ -179,7 +179,10 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.get(`/api/users/${id}`, config)
+    const { data } = await axios.get(
+      `https://queuex.online/api/users/${id}`,
+      config
+    )
 
     dispatch({
       type: USER_DETAILS_SUCCESS,
@@ -216,7 +219,11 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.put(`/api/users/profile`, user, config)
+    const { data } = await axios.put(
+      `https://queuex.online/api/users/profile`,
+      user,
+      config
+    )
 
     dispatch({
       type: USER_UPDATE_PROFILE_SUCCESS,

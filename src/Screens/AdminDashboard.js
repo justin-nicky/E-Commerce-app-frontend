@@ -81,7 +81,7 @@ const AdminDashboard = () => {
     }
 
     const { data } = await axios.get(
-      `/api/dashboard/salesreport/${startDate}/${endDate}`,
+      `https://queuex.online/api/dashboard/salesreport/${startDate}/${endDate}`,
       config
     )
     setSalesReportInARange(data)

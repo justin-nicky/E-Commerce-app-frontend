@@ -21,7 +21,11 @@ export const createCoupon = (coupon) => async (dispatch, getState) => {
 
     const config = { headers: { Authorization: `Bearer ${userInfo.token}` } }
 
-    const { data } = await axios.post(`/api/coupons`, { coupon }, config)
+    const { data } = await axios.post(
+      `https://queuex.online/api/coupons`,
+      { coupon },
+      config
+    )
 
     dispatch({ type: COUPON_ADD_SUCCESS })
   } catch (error) {
@@ -45,7 +49,10 @@ export const listCoupons = () => async (dispatch, getState) => {
 
     const config = { headers: { Authorization: `Bearer ${userInfo.token}` } }
 
-    const { data } = await axios.get(`/api/coupons`, config)
+    const { data } = await axios.get(
+      `https://queuex.online/api/coupons`,
+      config
+    )
 
     dispatch({ type: COUPON_LIST_SUCCESS, payload: data.data })
   } catch (error) {
@@ -69,7 +76,7 @@ export const deleteCoupon = (code) => async (dispatch, getState) => {
 
     const config = { headers: { Authorization: `Bearer ${userInfo.token}` } }
 
-    await axios.delete(`/api/coupons/${code}`, config)
+    await axios.delete(`https://queuex.online/api/coupons/${code}`, config)
 
     dispatch({ type: COUPON_DELETE_SUCCESS })
   } catch (error) {

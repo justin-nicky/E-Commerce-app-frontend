@@ -20,7 +20,7 @@ export const createCategory =
       const config = { headers: { Authorization: `Bearer ${userInfo.token}` } }
 
       const { data } = await axios.post(
-        `/api/categories`,
+        `https://queuex.online/api/categories`,
         { category, subCategory },
         config
       )
@@ -45,7 +45,10 @@ export const listCategories = () => async (dispatch, getState) => {
     } = getState()
 
     const config = { headers: { Authorization: `Bearer ${userInfo.token}` } }
-    const { data } = await axios.get('/api/categories', config)
+    const { data } = await axios.get(
+      'https://queuex.online/api/categories',
+      config
+    )
     dispatch({ type: CATEGORY_LIST_SUCCESS, payload: data })
   } catch (error) {
     dispatch({

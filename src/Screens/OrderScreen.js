@@ -74,7 +74,9 @@ const OrderScreen = ({ match, history }) => {
     }
 
     const addPayPalScript = async () => {
-      const { data: clientId } = await axios.get('/api/config/paypal')
+      const { data: clientId } = await axios.get(
+        'https://queuex.online/api/config/paypal'
+      )
       const script = document.createElement('script')
       script.type = 'text/javascript'
       script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}`
@@ -128,7 +130,7 @@ const OrderScreen = ({ match, history }) => {
     // creating a new order
     const config = { headers: { Authorization: `Bearer ${userInfo.token}` } }
     const result = await axios.post(
-      `/api/orders/${orderId}/razorpay`,
+      `https://queuex.online/api/orders/${orderId}/razorpay`,
       { order },
       config
     )

@@ -40,9 +40,9 @@ const RegisterScreen = ({ location, history }) => {
 
   const submitHandler = (e) => {
     e.preventDefault()
-    setNameError(nameInputBlurHandler(name))
-    setEmailError(emailInputBlurHandler(email))
-    setPasswordError(passwordInputBlurHandler(password))
+    nameInputBlurHandler(name, setNameError)
+    emailInputBlurHandler(email, setEmailError)
+    passwordInputBlurHandler(password, setPasswordError)
     if (!password == confirmPassword) {
       setPasswordError('Passwords do not match')
     } else if (
@@ -76,10 +76,10 @@ const RegisterScreen = ({ location, history }) => {
             value={name}
             onChange={(e) => {
               setName(e.target.value)
-              setNameError(nameInputChangeHandler(e.target.value))
+              nameInputChangeHandler(e.target.value, setNameError)
             }}
             onBlur={(e) => {
-              setNameError(nameInputBlurHandler(e.target.value, nameError))
+              nameInputBlurHandler(e.target.value, setNameError)
             }}
             placeholder='Enter name'
           />
@@ -95,10 +95,10 @@ const RegisterScreen = ({ location, history }) => {
             value={email}
             onChange={(e) => {
               setEmail(e.target.value)
-              setEmailError(emailInputChangeHandler(e.target.value, emailError))
+              emailInputChangeHandler(e.target.value, setEmailError)
             }}
             onBlur={(e) => {
-              setEmailError(emailInputBlurHandler(e.target.value))
+              emailInputBlurHandler(e.target.value, setEmailError)
             }}
             placeholder='Enter email'
           />
@@ -114,10 +114,10 @@ const RegisterScreen = ({ location, history }) => {
             value={password}
             onChange={(e) => {
               setPassword(e.target.value)
-              setPasswordError(passwordInputChangeHandler(e.target.value))
+              passwordInputChangeHandler(e.target.value, setPasswordError)
             }}
             onBlur={(e) => {
-              setPasswordError(passwordInputBlurHandler(e.target.value))
+              passwordInputBlurHandler(e.target.value, setPasswordError)
             }}
             placeholder='Enter password'
           />

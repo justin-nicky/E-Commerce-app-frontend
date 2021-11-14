@@ -73,7 +73,10 @@ const ShippingScreen = ({ history }) => {
 
   const fetchAddresses = async () => {
     try {
-      const { data } = await axios.get('/api/users/address', config)
+      const { data } = await axios.get(
+        'https://queuex.online/api/users/address',
+        config
+      )
       setAddresses(data.addresses)
     } catch (error) {
       console.log(error)
@@ -113,7 +116,11 @@ const ShippingScreen = ({ history }) => {
           country,
         }
         try {
-          await axios.post('/api/users/address', formData, config)
+          await axios.post(
+            'https://queuex.online/api/users/address',
+            formData,
+            config
+          )
           fetchAddresses()
         } catch (error) {
           console.error(error)
@@ -124,7 +131,10 @@ const ShippingScreen = ({ history }) => {
 
   const deleteHandler = async () => {
     try {
-      await axios.delete(`/api/users/address/${index}`, config)
+      await axios.delete(
+        `https://queuex.online/api/users/address/${index}`,
+        config
+      )
       fetchAddresses()
     } catch (error) {
       console.error(error)

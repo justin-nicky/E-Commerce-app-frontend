@@ -26,7 +26,7 @@ export const fileUploadAndResize = (e) => {
         0,
         (uri) => {
           axios
-            .post(`/api/upload`, { image: uri }, config)
+            .post(`https://queuex.online/api/upload`, { image: uri }, config)
             .then((res) => {
               //console.log('IMAGE UPLOAD RES DATA', res)
               resolve(res.data.url)
@@ -58,7 +58,7 @@ export const fileUpload = (e) => {
 
     if (file) {
       axios
-        .post(`/api/upload`, { image: e }, config)
+        .post(`https://queuex.online/api/upload`, { image: e }, config)
         .then((res) => {
           //console.log('IMAGE UPLOAD RES DATA', res)
           resolve(res.data.url)
